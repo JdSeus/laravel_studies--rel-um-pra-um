@@ -44,7 +44,7 @@ Route::get('/enderecos', function () {
         
         echo "<p>Nome: " . $e->cliente->nome . "</p>";
         echo "<p>Telefone: " . $e->cliente->telefone . "</p>";
-        
+
         echo "<p>Rua : " . $e->rua . "</p>";
         echo "<p>Numero : " . $e->numero . "</p>";
         echo "<p>Bairro : " . $e->bairro . "</p>";
@@ -55,6 +55,39 @@ Route::get('/enderecos', function () {
     }
 });
 
+Route::get('/inserir', function() {
+    $c = new Cliente();
+    $c->nome = "Jose Almeira";
+    $c->telefone = "11 97878-787";
+    $c->save();
+
+    $e = new Endereco();
+    $e->rua = "Av. do Estado";
+    $e->numero = 400;
+    $e->bairro = "Centro";
+    $e->cidade = "São Paulo";
+    $e->uf = "SP";
+    $e->cep = "13010-456";
+    
+    $c->endereco()->save($e);
+
+
+
+    $c = new Cliente();
+    $c->nome = "Marcos Silva";
+    $c->telefone = "12 97878-787";
+    $c->save();
+
+    $e = new Endereco();
+    $e->rua = "Av. do Brasil";
+    $e->numero = 1500;
+    $e->bairro = "Jardim Olivia";
+    $e->cidade = "São Paulo";
+    $e->uf = "SP";
+    $e->cep = "130321-436";
+    
+    $c->endereco()->save($e);
+});
 
 
 
