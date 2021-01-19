@@ -95,4 +95,10 @@ Route::get('/clientes/json', function() {
     return $clientes->toJson();
 });
 
+Route::get('/enderecos/json', function() {
+    //$enderecos = Cliente::all();
+    $enderecos = Endereco::with(['cliente'])->get();
+    return $enderecos->toJson();
+});
+
 
