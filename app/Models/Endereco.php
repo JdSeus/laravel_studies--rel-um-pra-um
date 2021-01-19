@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Endereco extends Model
 {
     use HasFactory;
+    function cliente() {
+        return $this->belongsTo('App\Models\Cliente');
+    }
 }
